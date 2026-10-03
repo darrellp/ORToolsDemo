@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ORToolsDemos.MainWindow"
+        Title="ORToolsDemos">
+    <TabControl>
+        <TabItem Header="Cryptarithms">
+            <DockPanel Margin="10">
+                <StackPanel DockPanel.Dock="Bottom" Spacing="10">
+                    <TextBlock x:Name="ResultTextBlock" FontFamily="Consolas, Courier New, monospace" />
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Button x:Name="SolveButton" Content="Solve" Click="SolveButton_Click" IsDefault="True" />
+                        <Button x:Name="ResetButton" Content="Reset" Click="ResetButton_Click" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Top">
+                    <StackPanel x:Name="SolvedPanel" Orientation="Vertical" Spacing="5" Width="200" Opacity="0">
+                        <TextBlock x:Name="SolvedAddendOneTextBlock" Height="36" TextAlignment="Right" VerticalAlignment="Center" FontFamily="Consolas, Courier New, monospace" FontSize="20" />
+                        <TextBlock x:Name="SolvedAddendTwoTextBlock" Height="36" TextAlignment="Right" VerticalAlignment="Center" FontFamily="Consolas, Courier New, monospace" FontSize="20" />
+                        <Border BorderBrush="Black" BorderThickness="0,1,0,0" Height="1" />
+                        <TextBlock x:Name="SolvedSumTextBlock" Height="36" TextAlignment="Right" VerticalAlignment="Center" FontFamily="Consolas, Courier New, monospace" FontSize="20" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Spacing="5" Width="200">
+                        <TextBox x:Name="AddendOneTextBox" Height="36" Watermark="Addend 1" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderThickness="0" FontFamily="Consolas, Courier New, monospace" FontSize="20" TextChanged="InputTextBox_TextChanged" />
+                        <TextBox x:Name="AddendTwoTextBox" Height="36" Watermark="Addend 2" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderThickness="0" FontFamily="Consolas, Courier New, monospace" FontSize="20" TextChanged="InputTextBox_TextChanged" />
+                        <Border BorderBrush="Black" BorderThickness="0,1,0,0" Height="1" />
+                        <TextBox x:Name="SumTextBox" Height="36" Watermark="Sum" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderThickness="0" FontFamily="Consolas, Courier New, monospace" FontSize="20" TextChanged="InputTextBox_TextChanged" />
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </TabItem>
+    </TabControl>
+</Window>

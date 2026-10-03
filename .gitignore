@@ -1,0 +1,10 @@
+## .NET / Visual Studio ignores
+.vs/
+bin/
+obj/
+*.user
+*.suo
+
+## OS files
+.DS_Store
+Thumbs.db
