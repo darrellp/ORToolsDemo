@@ -36,6 +36,33 @@
                             </DockPanel>
                         </TabItem>
                         <TabItem Header="Multiply">
+                            <DockPanel Margin="10">
+                                <StackPanel DockPanel.Dock="Bottom" Spacing="10">
+                                    <TextBlock x:Name="MultiplyResultTextBlock" FontFamily="Consolas, Courier New, monospace" />
+                                    <StackPanel Orientation="Horizontal" Spacing="10">
+                                        <Button x:Name="MultiplySolveButton" Content="Solve" Click="MultiplySolveButton_Click" IsDefault="True" />
+                                        <Button x:Name="MultiplyResetButton" Content="Reset" Click="MultiplyResetButton_Click" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Top">
+                                    <StackPanel x:Name="MultiplySolvedPanel" Orientation="Vertical" Spacing="5" Width="250" Opacity="0">
+                                        <TextBlock x:Name="SolvedMultiplicandTextBlock" Height="36" TextAlignment="Right" VerticalAlignment="Center" FontFamily="Consolas, Courier New, monospace" FontSize="20" />
+                                        <TextBlock x:Name="SolvedMultiplierTextBlock" Height="36" TextAlignment="Right" VerticalAlignment="Center" FontFamily="Consolas, Courier New, monospace" FontSize="20" />
+                                        <Border BorderBrush="Black" BorderThickness="0,1,0,0" Height="36" />
+                                        <StackPanel x:Name="SolvedPartialProductsPanel" Orientation="Vertical" Spacing="5" />
+                                        <Border BorderBrush="Black" BorderThickness="0,1,0,0" Height="36" />
+                                        <TextBlock x:Name="SolvedProductTextBlock" Height="36" TextAlignment="Right" VerticalAlignment="Center" FontFamily="Consolas, Courier New, monospace" FontSize="20" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" Spacing="5" Width="250">
+                                        <TextBox x:Name="MultiplicandTextBox" Height="36" Watermark="Multiplicand" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderThickness="0" FontFamily="Consolas, Courier New, monospace" FontSize="20" TextChanged="InputTextBox_TextChanged" />
+                                        <TextBox x:Name="MultiplierTextBox" Height="36" Watermark="Multiplier" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderThickness="0" FontFamily="Consolas, Courier New, monospace" FontSize="20" TextChanged="MultiplierTextBox_TextChanged" />
+                                        <Border BorderBrush="Black" BorderThickness="0,1,0,0" Height="36" />
+                                        <StackPanel x:Name="PartialProductsPanel" Orientation="Vertical" Spacing="5" />
+                                        <Border BorderBrush="Black" BorderThickness="0,1,0,0" Height="36" />
+                                        <TextBox x:Name="ProductTextBox" Height="36" Watermark="Product" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderThickness="0" FontFamily="Consolas, Courier New, monospace" FontSize="20" TextChanged="InputTextBox_TextChanged" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </DockPanel>
                         </TabItem>
                         <TabItem Header="Division">
                         </TabItem>
