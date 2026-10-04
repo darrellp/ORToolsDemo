@@ -7,7 +7,9 @@
         Title="ORToolsDemos">
     <TabControl>
         <TabItem Header="Cryptarithms">
-            <DockPanel Margin="10">
+            <TabControl>
+                <TabItem Header="Sum">
+                    <DockPanel Margin="10">
                 <StackPanel DockPanel.Dock="Bottom" Spacing="10">
                     <TextBlock x:Name="ResultTextBlock" FontFamily="Consolas, Courier New, monospace" />
                     <StackPanel Orientation="Horizontal" Spacing="10">
@@ -31,7 +33,13 @@
                         <TextBox x:Name="SumTextBox" Grid.Row="2" Grid.Column="0" Height="36" Watermark="Sum" HorizontalAlignment="Right" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderThickness="0" FontFamily="Consolas, Courier New, monospace" FontSize="20" TextChanged="InputTextBox_TextChanged" />
                     </Grid>
                 </StackPanel>
-            </DockPanel>
-        </TabItem>
-    </TabControl>
+                            </DockPanel>
+                        </TabItem>
+                        <TabItem Header="Multiply">
+                        </TabItem>
+                        <TabItem Header="Division">
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+            </TabControl>
 </Window>
