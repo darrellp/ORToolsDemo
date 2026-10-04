@@ -96,9 +96,9 @@ public partial class MainWindow : Window
         string[] addends = _addendTextBoxes.Select(tb => tb.Text ?? string.Empty).ToArray();
         string sum = SumTextBox.Text ?? string.Empty;
 
-        string soln = Sum.Solve(sum, addends);
+        (string soln, int[] values, int solutionCount) = Sum.Solve(sum, addends);
 
-        if (soln is null)
+        if (solutionCount == 0)
         {
             ResultTextBlock.Text = "No Solution";
             SolvedPanel.Opacity = 0;
@@ -106,45 +106,31 @@ public partial class MainWindow : Window
         }
 
         var characters = new StringBuilder();
-        var values = new StringBuilder();
+        var digitsText = new StringBuilder();
         for (int digit = 0; digit < soln.Length; digit++)
         {
             if (soln[digit] != ' ')
             {
                 characters.Append(soln[digit]).Append(' ');
-                values.Append(digit).Append(' ');
+                digitsText.Append(digit).Append(' ');
             }
         }
 
-        ResultTextBlock.Text = $"{characters.ToString().TrimEnd()}\n{values.ToString().TrimEnd()}";
-
-        var digitsByLetter = new Dictionary<char, int>();
-        for (int digit = 0; digit < soln.Length; digit++)
+        string resultText = $"{characters.ToString().TrimEnd()}\n{digitsText.ToString().TrimEnd()}";
+        if (solutionCount > 1)
         {
-            if (soln[digit] != ' ')
-            {
-                digitsByLetter[soln[digit]] = digit;
-            }
+            resultText += "\n(solution is not unique)";
         }
+
+        ResultTextBlock.Text = resultText;
 
         for (int i = 0; i < _addendTextBoxes.Count; i++)
         {
-            _solvedAddendTextBlocks[i].Text = ToDigits(addends[i], digitsByLetter);
+            _solvedAddendTextBlocks[i].Text = values[i].ToString().PadLeft(addends[i].Length, '0');
         }
 
-        SolvedSumTextBlock.Text = ToDigits(sum, digitsByLetter);
+        SolvedSumTextBlock.Text = values[^1].ToString().PadLeft(sum.Length, '0');
         SolvedPanel.Opacity = 1;
-    }
-
-    private static string ToDigits(string word, Dictionary<char, int> digitsByLetter)
-    {
-        var result = new StringBuilder();
-        foreach (char c in word)
-        {
-            result.Append(digitsByLetter.TryGetValue(c, out int digit) ? digit.ToString() : c.ToString());
-        }
-
-        return result.ToString();
     }
 
     private void ResetButton_Click(object sender, RoutedEventArgs e)
@@ -164,6 +150,8 @@ public partial class MainWindow : Window
 
         SolvedSumTextBlock.Text = string.Empty;
         SolvedPanel.Opacity = 0;
+
+        _addendTextBoxes[0].Focus();
     }
 
     private void InputTextBox_TextChanged(object sender, TextChangedEventArgs e)
